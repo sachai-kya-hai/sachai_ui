@@ -4,18 +4,22 @@ import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import MainPage from "./pages/MainPage";
 import Navbar from "./components/Navbar";
-import {  ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
 import { Theme } from "./theme";
+import { WagmiConfig } from "wagmi";
+import { wagmiCreateConfig } from "./utils/wagmi/wallet";
 
 const App = () => {
   return (
     <ThemeProvider theme={Theme}>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
+      <WagmiConfig config={wagmiCreateConfig}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </WagmiConfig>
     </ThemeProvider>
   );
 };
