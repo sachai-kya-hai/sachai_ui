@@ -1,7 +1,5 @@
 import { Button, Typography } from "@mui/material"
-
 import { useTranslation } from 'react-i18next';
-import ResponsiveAppBar from "../components/Navbar/ResponsiveAppbar";
 import { WalletButton } from "../components/WalletButton";
 
 const MainPage = () => {
@@ -14,8 +12,6 @@ const MainPage = () => {
             <p>{t('description.part2')}</p>
             <Button variant="contained" color="primary">Hello this</Button>
             <Button variant="contained" color='secondary'>Hello this</Button>
-            <ResponsiveAppBar />
-
         </div>
     )
 }
