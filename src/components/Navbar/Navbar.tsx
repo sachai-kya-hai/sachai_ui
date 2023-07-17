@@ -37,27 +37,12 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" color='primary'>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            Sachai
-          </Typography>
+          <Box src="static/images/sachai-logos_black.png" component="img" sx={{
+            height: 70, display: { xs: 'none', md: 'flex' }, mr: 1
+          }} />
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -97,7 +82,7 @@ function Navbar() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+
           <Typography
             variant="h5"
             noWrap
@@ -114,7 +99,11 @@ function Navbar() {
               textDecoration: 'none',
             }}
           >
-            <Link style={{ textDecoration: 'none', color: "inherit" }} to="/"> Sachai </Link>
+            <Link style={{ textDecoration: 'none', color: "inherit" }} to="/">
+              <Box src="static/images/sachai-logos_black.png" component="img" sx={{
+                height: 70, display: { xs: 'flex', md: 'none' }, mr: 1
+              }} />
+            </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -131,7 +120,7 @@ function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Remy Sharp" src="/static/images/sachai.png" />
               </IconButton>
             </Tooltip>
             <Menu
