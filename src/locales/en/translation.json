@@ -1,8 +1,15 @@
 {
-    "title": "Welcome to react using react-i18next",
+  "main-page": {
+    "title": "Uncover the facts and get to the bottom of the story!",
+    "moto": "A thousand miles journey starts with first step",
     "description": {
-      "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
-      "part2": "Switch language between english and german using buttons above."
-    },
-    "moto":"A thousand miles journey starts with first step"
+      "part2": "Comming Soon, building in progress"
+    }
+  },
+  "wallet": {
+    "error": {
+      "title": "Error",
+      "message": "User rejected the request."
+    }
   }
+}
