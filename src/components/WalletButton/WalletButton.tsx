@@ -1,3 +1,4 @@
+import { Button } from '@mui/material'
 import { useConnect } from 'wagmi'
 
 export function WalletButton() {
@@ -7,7 +8,8 @@ export function WalletButton() {
     return (
         <div>
             {connectors.map((connector) => (
-                <button
+                <Button
+                    color='warning'
                     disabled={!connector.ready}
                     key={connector.id}
                     onClick={() => connect({ connector })}
@@ -17,7 +19,7 @@ export function WalletButton() {
                     {isLoading &&
                         connector.id === pendingConnector?.id &&
                         ' (connecting)'}
-                </button>
+                </Button>
             ))}
 
             {error && <div>{error.message}</div>}

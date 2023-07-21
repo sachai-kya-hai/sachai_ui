@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,15 +11,16 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import { WalletButton } from '../WalletButton';
 import { Link } from 'react-router-dom';
 
 const pages = ['Top News', 'Dashboard', 'About Us'];
 const settings = ['Profile', 'Contribute', 'Logout'];
 
 function Navbar() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -40,9 +41,12 @@ function Navbar() {
     <AppBar position="static" color='primary'>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Box src="static/images/sachai-logos_black.png" component="img" sx={{
-            height: 70, display: { xs: 'none', md: 'flex' }, mr: 1
-          }} />
+          {/* Sachai Logo */}
+          <Link to='/'>
+            <Box src="static/images/sachai-logos_black.png" component="img" sx={{
+              height: 70, display: { xs: 'none', md: 'flex' }, mr: 1
+            }}></Box>
+          </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -117,7 +121,7 @@ function Navbar() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          {!isLoggedIn ? <WalletButton /> : <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/sachai.png" />
@@ -146,7 +150,7 @@ function Navbar() {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box>}
         </Toolbar>
       </Container>
     </AppBar>
