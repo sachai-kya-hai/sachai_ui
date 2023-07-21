@@ -7,8 +7,8 @@ const MainPage = () => {
 
     return (
         <Box sx={{}}>
-            <Typography variant="h2" color='primary'>{t('moto')}</Typography>
-            <p>{t('description.part1')}</p>
+            <Typography variant="h3" color='primary'>{t('title')}</Typography>
+
             <p>{t('description.part2')}</p>
 
         </Box>

@@ -1,7 +1,10 @@
 import { Button } from '@mui/material'
+import { useTranslation } from 'react-i18next';
 import { useConnect } from 'wagmi'
+import SModal from '../SModal/SModal';
 
 export function WalletButton() {
+    const { t } = useTranslation('profiles', { keyPrefix: 'wallet' });
     const { connect, connectors, error, isLoading, pendingConnector } =
         useConnect()
 
@@ -22,7 +25,7 @@ export function WalletButton() {
                 </Button>
             ))}
 
-            {error && <div>{error.message}</div>}
+            {error && <SModal title={t('title')} body={t('body')} />}
         </div>
     )
 }
