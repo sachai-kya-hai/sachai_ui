@@ -1,0 +1,36 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["@e2e/scenarios", "./e2e_tests/scenarios"],
+          ["@e2e/utilities", "./e2e_tests/utilities"]
+        ],
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".node"]
+      }
+    }
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:import/errors"
+  ],
+  "rules": {
+    "camelcase": "error",
+    "comma-dangle": ["error", "never"],
+    "no-console": "error",
+    // "jest/no-disabled-tests": "warn",
+    // "jest/no-focused-tests": "warn",
+    // "jest/no-identical-title": "error",
+    // "jest/prefer-to-have-length": "warn",
+    // "jest/valid-expect": "warn",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "off",
+    "indent": ["error", 2],
+    "eol-last": ["error", "always"],
+    "import/newline-after-import": ["error", { "count": 1 }]
+  }
+}
