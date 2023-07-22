@@ -6,7 +6,7 @@ const reducer = {
 export const store = configureStore({reducer})
 
 export function getStoreWithState(preloadedState? : RootState){
-    return configureStore({reducer,preloadedState})
+  return configureStore({reducer,preloadedState})
 }
 
 

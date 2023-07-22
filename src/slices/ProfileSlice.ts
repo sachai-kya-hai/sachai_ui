@@ -1,30 +1,30 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { IProfile } from "../Interfaces/IProfile";
+import { createSlice } from '@reduxjs/toolkit';
+import { IProfile } from '../Interfaces/IProfile';
 
 interface ProfileState {
-    loading: boolean,
-    error: boolean,
-    profile?: IProfile
+  loading: boolean;
+  error: boolean;
+  profile?: IProfile;
 }
 
-const initialProfileState: ProfileState ={
-    loading: false,
-    error: false
-}
+const initialProfileState: ProfileState = {
+  loading: false,
+  error: false
+};
 
 export const profileSlice = createSlice({
-    name: 'profile',
-    initialState: initialProfileState,
-    reducers: {
-        toggleError: (state) => {
-            state.error = !state.error;
-        },
-        clearProfile: (state) => {
-            state.profile = undefined;
-        }
+  name: 'profile',
+  initialState: initialProfileState,
+  reducers: {
+    toggleError: state => {
+      state.error = !state.error;
     },
-    extraReducers: (builder) => {
-        //axios calls once set up, will be set here through builders and cases.
+    clearProfile: state => {
+      state.profile = undefined;
     }
-})
-
+  },
+  //eslint-disable-next-line
+  extraReducers: builder => {
+    //axios calls once set up, will be set here through builders and cases.
+  }
+});

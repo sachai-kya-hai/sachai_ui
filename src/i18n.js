@@ -25,18 +25,18 @@ i18n
     debug: true,
 
     interpolation: {
-      escapeValue: false, // not needed for react as it escapes by default
+      escapeValue: false // not needed for react as it escapes by default
     },
     resources:{
-        en:{
-          profiles:translationEN,
-          translation: {
-            description: {
-              part1: 'Edit <1>src/App.js</1> and save to reload.',
-              part2: 'Learn React'
-            }
+      en:{
+        profiles:translationEN,
+        translation: {
+          description: {
+            part1: 'Edit <1>src/App.js</1> and save to reload.',
+            part2: 'Learn React'
           }
         }
+      }
     }
   });
 

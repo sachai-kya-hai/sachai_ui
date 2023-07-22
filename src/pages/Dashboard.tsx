@@ -1,13 +1,13 @@
 
 
 const Dashboard = () => {
-    return (
-        <div>
-            <h1>Dashboard</h1>
-            <p>This is the placeholder for dashboard</p>
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      <p>This is the placeholder for dashboard</p>
 
-        </div>
-    )
+    </div>
+  )
 }
 
 export default Dashboard
