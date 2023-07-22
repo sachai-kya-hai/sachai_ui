@@ -43,7 +43,7 @@ export const getAllProfiles = createAsyncThunk(
 );
 
 export const createProfile = createAsyncThunk(
-  'date/book',
+  'profile/create',
   async (prof: IProfile, thunkAPI) => {
     try {
       const res = await axios.post('http://localhost:8080/profile/', prof);
