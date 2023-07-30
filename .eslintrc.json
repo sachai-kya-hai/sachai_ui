@@ -17,7 +17,7 @@
   "rules": {
     "camelcase": "error",
     "comma-dangle": ["error", "never"],
-    "no-console": "error",
+    "no-console": "warn",
     // "jest/no-disabled-tests": "warn",
     // "jest/no-focused-tests": "warn",
     // "jest/no-identical-title": "error",
