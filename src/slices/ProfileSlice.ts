@@ -6,51 +6,48 @@ interface ProfileState {
   loading: boolean;
   error: boolean;
   profile?: IProfile;
+  profileList: IProfile[];
 }
 
 const initialProfileState: ProfileState = {
   loading: false,
-  error: false
+  error: false,
+  profileList: []
 };
 
 //All endpoints tbd, all mock for now
-export const getById = createAsyncThunk(
+export const getProfileById = createAsyncThunk(
   'profile/userid',
   async (id: number) => {
     try {
-      const res = await axios.get(
-        `http://localhost:8080/profile/user?userId=${id}`
-      );
-      console.log(res.data);
+      const res = await axios.get(`http://localhost:8080/profile/user?userId=${id}`);
       return res.data;
-    } catch (e) {
-      console.log(e);
+    } catch (err : any) {
+      return err.message;
     }
   }
 );
 
 export const getAllProfiles = createAsyncThunk(
   'profile/getall',
-  async thunkAPI => {
+  async ()=> {
     try {
       const res = await axios.get('http://localhost:8080/profile/all');
-      console.log(res.data);
       return res.data;
-    } catch (e) {
-      console.log(e);
+    } catch (err: any) {
+      return err.message;
     }
   }
 );
 
 export const createProfile = createAsyncThunk(
   'profile/create',
-  async (prof: IProfile, thunkAPI) => {
+  async (prof: IProfile) => {
     try {
       const res = await axios.post('http://localhost:8080/profile/', prof);
-      console.log(res.data);
       return res.data;
-    } catch (e) {
-      console.log(e);
+    } catch (err: any) {
+      return err.message;
     }
   }
 );
@@ -67,8 +64,55 @@ export const profileSlice = createSlice({
     }
   },
   extraReducers: builder => {
-    //axios calls once set up, will be set here through builders and cases.
+    builder.addCase(getProfileById.pending, (state)=>{
+      state.loading = true;
+      state.error = false;
+    });
+    builder.addCase(getProfileById.fulfilled, (state, action)=> {
+      state.profile = action.payload;
+      state.error = false;
+      state.loading = false;
+    });
+    builder.addCase(getProfileById.rejected,(state)=> {
+      state.error = true;
+      state.loading = false;
+    });
+    builder.addCase(getAllProfiles.pending, (state)=>{
+      state.loading = true;
+      state.error = false;
+    });
+    builder.addCase(getAllProfiles.fulfilled, (state, action)=> {
+      state.profileList = action.payload;
+      state.error = false;
+      state.loading = false;
+    });
+    builder.addCase(getAllProfiles.rejected,(state)=> {
+      state.error = true;
+      state.loading = false;
+    });
+    builder.addCase(createProfile.pending, (state)=>{
+      state.loading = true;
+      state.error = false;
+    });
+    builder.addCase(createProfile.fulfilled, (state, action)=> {
+      state.profile = action.payload;
+      state.profileList.push(action.payload)
+      state.error = false;
+      state.loading = false;
+    });
+    builder.addCase(createProfile.rejected,(state)=> {
+      state.error = true;
+      state.loading = false;
+    });
   }
 });
+
+//helper selectors, might need them at some point
+export const selectAllProfiles = (state: { profile: { profileList: IProfile[]; }; }) => state.profile.profileList
+
+export const selectCurrentProfile = (state: { profile: { profile: IProfile; }; }) => state.profile.profile
+
+
+export const {toggleError, clearProfile} = profileSlice.actions
 
 export default profileSlice.reducer;
