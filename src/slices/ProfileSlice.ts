@@ -20,7 +20,7 @@ export const getProfileById = createAsyncThunk(
   'profile/userid',
   async (id: number) => {
     try {
-      const res = await axios.get(`http://localhost:8080/profile/user?userId=${id}`);
+      const res = await axios.get(`http://localhost:8080/profiles/${id}`);
       return res.data;
     } catch (err : any) {
       return err.message;
@@ -32,7 +32,7 @@ export const getAllProfiles = createAsyncThunk(
   'profile/getall',
   async ()=> {
     try {
-      const res = await axios.get('http://localhost:8080/profile/all');
+      const res = await axios.get('http://localhost:8080/profiles');
       return res.data;
     } catch (err: any) {
       return err.message;
@@ -44,7 +44,7 @@ export const createProfile = createAsyncThunk(
   'profile/create',
   async (prof: IProfile) => {
     try {
-      const res = await axios.post('http://localhost:8080/profile/', prof);
+      const res = await axios.post('http://localhost:8080/profiles/', prof);
       return res.data;
     } catch (err: any) {
       return err.message;

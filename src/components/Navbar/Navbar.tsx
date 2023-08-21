@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { WalletButton } from '../WalletButton';
 import { Link } from 'react-router-dom';
 
-const pages = ['Top News', 'Dashboard', 'About Us'];
+const pages = ['Top News', 'Profiles', 'Dashboard', 'About Us'];
 const settings = ['Profile', 'Contribute', 'Logout'];
 
 function Navbar() {
