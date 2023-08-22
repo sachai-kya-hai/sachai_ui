@@ -13,21 +13,21 @@ interface CardProps {
 
 }
 
-export const ProfileCard: FC<CardProps> = ({ title, body, imageURL }) => {
+export const ProfileCard: React.FC<any> = (prop) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         height="140"
-        image={imageURL}
+        image={prop.imageurl}
         alt="green iguana"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {title}
+          {prop.firstname + " " + prop.lastname}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {body}
+          "Body"
         </Typography>
       </CardContent>
       <CardActions>
